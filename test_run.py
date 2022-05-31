@@ -12,11 +12,11 @@ def run(playwright: Playwright) -> None:
     # Go to https://symonstorozhenko.wixsite.com/website-1
     page.goto("https://symonstorozhenko.wixsite.com/website-1")
     page.set_default_timeout(3000)
+    page.wait_for_load_state()
 
     # Act - When/And
     # Click button:has-text("Log In")
-    page.click('//html/body/div[1]/div/div[4]/div/header/div/div[2]/div[2]/div/div/section[3]/div[2]/div[2]/div['
-               '2]/div/div[1]/button/span')
+    page.click('button:visible')
     # page.click("button:has-text(\"Log In\")", timeout=7000)
     # Click [data-testid="signUp\.switchToSignUp"]
     page.click("[data-testid=\"signUp\\.switchToSignUp\"]")
