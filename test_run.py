@@ -9,30 +9,20 @@ def run(playwright: Playwright) -> None:
     context = browser.new_context()
     # Open new page
     page = context.new_page()
-    # Go to https://symonstorozhenko.wixsite.com/website-1
     page.goto("https://symonstorozhenko.wixsite.com/website-1")
-    page.set_default_timeout(3000)
-    page.wait_for_load_state()
+    time.sleep(2)
 
     # Act - When/And
-    # Click button:has-text("Log In")
-    page.click('button:visible')
-    # page.click("button:has-text(\"Log In\")", timeout=7000)
-    # Click [data-testid="signUp\.switchToSignUp"]
+    # page.click('button:visible')
+    # page.click("'Log In'", timeout=5000) //IT DID NOT WORK
+    page.locator('text="Log In"').click()
     page.click("[data-testid=\"signUp\\.switchToSignUp\"]")
-    # Click [data-testid="switchToEmailLink"] [data-testid="buttonElement"]
     page.click("[data-testid=\"switchToEmailLink\"] [data-testid=\"buttonElement\"]")
-    # Click [data-testid="emailAuth"] input[type="email"]
     page.click("[data-testid=\"emailAuth\"] input[type=\"email\"]")
-    # Fill [data-testid="emailAuth"] input[type="email"]
     page.fill("[data-testid=\"emailAuth\"] input[type=\"email\"]", "symon.storozhenko@gmail.com")
-    # Press Tab
     page.press("[data-testid=\"emailAuth\"] input[type=\"email\"]", "Tab")
-    # Fill input[type="password"]
     page.fill("input[type=\"password\"]", "test123")
-    # Click [data-testid="submit"] [data-testid="buttonElement"]
     page.click("[data-testid=\"submit\"] [data-testid=\"buttonElement\"]")
-    # Click [aria-label="symon\.storozhenko account menu"]
     page.click("[aria-label=\"symon\\.storozhenko account menu\"]")
 
     # Assert - Then
@@ -53,3 +43,4 @@ with sync_playwright() as playwright:
 # I had to change the selector for the log in button
 # I use playwright codegen 'website' to generate code
 # use playwright.$("") to search for elements like , text, button, button:visible, etc...
+# continue watching new section 56.NEW!
