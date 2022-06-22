@@ -41,6 +41,6 @@ with sync_playwright() as playwright:
     run(playwright)
 
 # I had to change the selector for the log in button
-# I use playwright codegen 'website' to generate code
+# I use 'playwright codegen 'website'' to generate code
 # use playwright.$("") to search for elements like , text, button, button:visible, etc...
 # continue watching new section 56.NEW!
